@@ -1,168 +1,171 @@
 ---
-title: API Reference
+title: Delivery | Bom Gourmet - Documentação API
 
 language_tabs:
-  - shell
-  - ruby
-  - python
+  - php: PHP
+  - csharp: C#
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - errors
+  - <a href='http://bomgourmet.delivery' target="_blank">Delivery | Bom Gourmet</a>
 
 search: true
 ---
 
-# Introduction
+# Impressora
+Documentação para a integração com o sistema de impressão automática de pedidos.
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+## Listar
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Endpoint para buscar os pedidos que ainda não foram listados no Software da Impressora
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+```php
+<?php
 
-# Authentication
+$data = [
+    "token" => "3f59d6f547d995f675522784f5c8c631"
+];
 
-> To authorize, use this code:
+$curl = curl_init();
 
-```ruby
-require 'kittn'
+curl_setopt_array($curl, [
+  CURLOPT_URL => "http://bomgourmet.delivery/api/pedido/confirmacao",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => $data,
+]);
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+?>
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
+> Retorno:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "Result"  ​:"OK",
+  "Errors"  ​:[
+
+  ],
+  "Records"  ​:[
+    {
+      "Id"      ​:1,
+      "RestaurantName"      ​:"Teste",
+      "Price"      ​:50.00,
+      "Discount"      ​:0.00,
+      "Fare"      ​:10.00,
+      "CustomerId"      ​:1,
+      "CustomerName"      ​:"Cliente",
+      "CustomerEmail"      ​:"cliente@email.com",
+      "CustomerPhone"      ​:"(41) 99887766",
+      "DeliveryAddressZipcode"      ​:"80010-020",
+      "DeliveryAddressRegion"      ​:"Centro",
+      "DeliveryAddressCity"      ​:"Curitiba",
+      "DeliveryAddressState"      ​:"Paraná",
+      "DeliveryAddressAddress"      ​:"Rua Pedro Ivo",
+      "DeliveryAddressNumber"      ​:"409",
+      "DeliveryAddressComplement"      ​:null,
+      "PaymentMethodId"      ​:1,
+      "PaymentMethodName"      ​:"Dinheiro",
+      "PaymentMethodMoneyReturn"      ​:100.00,
+      "VoucherId"      ​:1,
+      "VoucherName"      ​:"Teste de voucher",
+      "VoucherCode"      ​:"CODIGO-VOUCHER",
+      "VoucherDiscount"      ​:20.00,
+      "DeliveryWayId"      ​:1,
+      "DeliveryWayName"      ​:"Entrega",
+      "Date"      ​:"2015-10-13 13:35:00",
+      "Observation": "Exemplo de observação",
+      "CustomerDocument": "59273924310",
+      "Products"      ​:[
+        {
+          "ProductId"          ​:1,
+          "ProductQuantity"          ​:1,
+          "ProductPrice"          ​:70.00,
+          "ProductName"          ​:"Coca cola",
+          "ProductCategoryParent"          ​:"600ml",
+          "ProductCategory"          ​:"Bebidas",
+          "SizeName"          ​:null,
+          "SizeQuantity"          ​:null,
+          "Part"          ​:1,
+          "PastaName"          ​:null,
+          "PastaPrice"          ​:null,
+          "SaleName"          ​:null,
+          "Observation"          ​:"Trazer quente"
+        }
+      ]
+    }
+  ]
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
 ### HTTP Request
+`POST /impressora/listar`
 
-`GET http://example.com/kittens/<ID>`
+### Parametros
 
-### URL Parameters
+Parametro | Formato | Observação
+----------|---------|------------
+token     |  string | Token do cliente.
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
 
+### Retorno
+
+  Campo | Formato | Observação
+--------|---------|-----------
+Result  |  string | Identificação do Retorno. OK ou Error
+Error   |  array  | Lista de erros, caso exista
+Records |  array  | Lista de pedidos, conforme abaixo
+
+### Retorno (Records)
+           Campo            |      Formato      | Observação
+----------------------------|-------------------|---------------------------------------
+Id                          | int               | Identificado do pedido
+RestaurantName              | string            | Nome do restaurante
+Price                       | float             | Valor total do pedido
+Discount                    | float / null      | Valor de desconto do pedido
+Fare                        | float             | Valor da taxa de entrega
+CustomerId                  | int               | Identificado do cliente
+CustomerName                | string            | Nome do cliente
+CustomerEmail               | string            | Email do cliente
+CustomerPhone               | string            | Telefone do cliente
+DeliveryAddressZipcode      | string            | CEP de entrega
+DeliveryAddressRegion       | string            | Bairro de entrega
+DeliveryAddressCity         | string            | Cidade de entrega
+DeliveryAddressState        | string            | Estado de entrega
+DeliveryAddressAddress      | string            | Endereço de entrega
+DeliveryAddressNumber       | int               | Número
+DeliveryAddressComplement   | string            | Complemento
+PaymentMethodId             | int               | Identificador da forma de pagamento
+PaymentMethodName           | string            | Nome da forma de pagamento
+PaymentMethodMoneyReturn    | float / null      | Troco
+VoucherId                   | int / null        | Identificado do voucher
+VoucherName                 | string / null     | Nome da promoção
+VoucherCode                 | string / null     | Código do voucher
+VoucherDiscount             | float / null      | Valor de desconto do voucher
+DeliveryWayId               | int               | Identificador da forma de entrega
+DeliveryWayName             | string            | Nome da forma de entrega
+CustomerDocument            | string            | CPF do Cliente
+Observation                 | string            | Observação sobre o pedido
+Date                        | datetime          | Data e hora do pedido
+Products                    | array             | Lista com os produtos, conforme abaixo.
+
+### Retorno (Products)
+       Campo            |      Formato      | Observação
+------------------------|-------------------|----------------
+ProductId               | int               | Identificado do produto
+ProductQuantity         | int               | Quantidade
+ProductPrice            | float             | Valor do produto
+ProductName             | string            | Nome do produto
+ProductCategoryParent   | string            | Categoria principal do produto
+ProductCategory         | string / null     | Categoria do produto
+SizeName                | string / null     | Nome do tamanho do produto
+SizeQuantity            | int  / null       | Quantidade de partes do tamanho
+Part                    | int               | Parte que o produto atual representa no tamanho
+PastaName               | string / null     | Tipo de massa do produto
+PastaPrice              | float / null      | Valor da massa
+SaleName                | string / null     | Nome da promoção
+Observation             | string / null     | Observações do cliente
