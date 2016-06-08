@@ -169,3 +169,96 @@ PastaName               | string / null     | Tipo de massa do produto
 PastaPrice              | float / null      | Valor da massa
 SaleName                | string / null     | Nome da promoção
 Observation             | string / null     | Observações do cliente
+
+## Cancelar pedido
+Endpoint para cancelar um pedido.
+
+```php
+<?php
+
+$data = [
+    "token" => "3f59d6f547d995f675522784f5c8c631",
+    "order" => "100"
+];
+
+$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "http://bomgourmet.delivery/api/pedido/cancelar",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => $data,
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+?>
+```
+
+> Retorno:
+
+```json
+{
+  "Result"  ​:"OK",
+  "Errors"  ​:[]
+}
+```
+
+### HTTP Request
+`POST /impressora/cancelar`
+
+### Parametros
+
+Parametro | Formato | Observação
+----------|---------|------------
+token     | string  | Token do cliente.
+order     | int     | ID do pedido
+
+
+### Retorno
+
+  Campo | Formato | Observação
+--------|---------|-----------
+Result  |  string | Identificação do Retorno. OK ou Error
+Error   |  array  | Lista de erros, caso exista
+
+
+## Ping
+Endpoint para verificar se a API esta respondendo
+
+```php
+<?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "http://bomgourmet.delivery/api/pedido/ping",
+  CURLOPT_RETURNTRANSFER => true
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+?>
+```
+
+> Retorno:
+
+```json
+{
+  "Result"  ​:"OK"
+}
+```
+
+### HTTP Request
+`GET /impressora/ping`
+
+### Retorno
+
+  Campo | Formato | Observação
+--------|---------|-----------
+Result  |  string | Identificação do Retorno. OK ou Error
