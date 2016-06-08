@@ -28,7 +28,7 @@ $data = [
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-  CURLOPT_URL => "http://bomgourmet.delivery/api/pedido/confirmacao",
+  CURLOPT_URL => "http://bomgourmet.delivery/api/impressora/confirmacao",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_TIMEOUT => 30,
   CURLOPT_CUSTOMREQUEST => "POST",
@@ -184,7 +184,7 @@ $data = [
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-  CURLOPT_URL => "http://bomgourmet.delivery/api/pedido/cancelar",
+  CURLOPT_URL => "http://bomgourmet.delivery/api/impressora/cancelar",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_TIMEOUT => 30,
   CURLOPT_CUSTOMREQUEST => "POST",
@@ -235,7 +235,7 @@ Endpoint para verificar se a API esta respondendo
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-  CURLOPT_URL => "http://bomgourmet.delivery/api/pedido/ping",
+  CURLOPT_URL => "http://bomgourmet.delivery/api/impressora/ping",
   CURLOPT_RETURNTRANSFER => true
 ]);
 
@@ -262,3 +262,52 @@ curl_close($curl);
   Campo | Formato | Observação
 --------|---------|-----------
 Result  |  string | Identificação do Retorno. OK ou Error
+
+
+## Update
+Endpoint para buscar versão e url para download.
+
+```php
+<?php
+
+$curl = curl_init();
+
+$env = "prod";
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "http://bomgourmet.delivery/api/impressora/update/".$env,
+  CURLOPT_RETURNTRANSFER => true
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+?>
+```
+
+
+> Retorno:
+
+```json
+{
+  "Version": "1.2.1",
+  "FileUrl": "https://delivery-printer.s3.amazonaws.com/1.2.1-121-1460635020.zip"
+}
+```
+
+### HTTP Request
+`GET /impressora/update/{env}`
+
+
+### Parametro
+Parametro | Default | Descrição
+----------|---------|-----------
+env       |  prod   | Ambiente da versão, pode ser prod, dev, homolog
+
+### Retorno
+
+  Campo | Formato | Observação
+--------|---------|-----------
+Version | string  | Versão do Software
+FileUrl | string  | URL para baixar o software
