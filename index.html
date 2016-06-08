@@ -133,7 +133,7 @@
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
-  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"http://bomgourmet.delivery/api/pedido/confirmacao"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"http://bomgourmet.delivery/api/impressora/confirmacao"</span><span class="p">,</span>
   <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
   <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"POST"</span><span class="p">,</span>
@@ -498,7 +498,7 @@
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
-  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"http://bomgourmet.delivery/api/pedido/cancelar"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"http://bomgourmet.delivery/api/impressora/cancelar"</span><span class="p">,</span>
   <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
   <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"POST"</span><span class="p">,</span>
@@ -575,7 +575,7 @@
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
-  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"http://bomgourmet.delivery/api/pedido/ping"</span><span class="p">,</span>
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"http://bomgourmet.delivery/api/impressora/ping"</span><span class="p">,</span>
   <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span>
 <span class="p">]);</span>
 
@@ -611,6 +611,77 @@
 <td>Result</td>
 <td>string</td>
 <td>Identificação do Retorno. OK ou Error</td>
+</tr>
+</tbody></table>
+
+<h2 id="update">Update</h2>
+
+<p>Endpoint para buscar versão e url para download.</p>
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nv">$env</span> <span class="o">=</span> <span class="s2">"prod"</span><span class="p">;</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="p">[</span>
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"http://bomgourmet.delivery/api/impressora/update/"</span><span class="o">.</span><span class="nv">$env</span><span class="p">,</span>
+  <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span>
+<span class="p">]);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre>
+
+<blockquote>
+<p>Retorno:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"FileUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://delivery-printer.s3.amazonaws.com/1.2.1-121-1460635020.zip"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /impressora/update/{env}</code></p>
+
+<h3 id="parametro">Parametro</h3>
+
+<table><thead>
+<tr>
+<th>Parametro</th>
+<th>Default</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>env</td>
+<td>prod</td>
+<td>Ambiente da versão, pode ser prod, dev, homolog</td>
+</tr>
+</tbody></table>
+
+<h3 id="retorno">Retorno</h3>
+
+<table><thead>
+<tr>
+<th>Campo</th>
+<th>Formato</th>
+<th>Observação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td>string</td>
+<td>Versão do Software</td>
+</tr>
+<tr>
+<td>FileUrl</td>
+<td>string</td>
+<td>URL para baixar o software</td>
 </tr>
 </tbody></table>
 
