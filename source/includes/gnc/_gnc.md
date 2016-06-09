@@ -16,7 +16,7 @@ $data = [
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-  CURLOPT_URL => "http://bomgourmet.delivery/api/pedido/listar",
+  CURLOPT_URL => "http://bomgourmet.delivery/api/pedidos/listar",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_TIMEOUT => 30,
   CURLOPT_CUSTOMREQUEST => "POST",
@@ -92,7 +92,7 @@ curl_close($curl);
 ```
 
 ### HTTP Request
-`POST /impressora/listar`
+`POST /pedidos/listar`
 
 ### Parametros
 
