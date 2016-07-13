@@ -99,7 +99,7 @@ KindPastas                  | Array             | Tipo de massas da categoria
 
 
 
-## Criar
+## Criar categoria
 Endpoint para criar uma categoria.
 
 <aside class="notice">
@@ -114,7 +114,7 @@ Endpoint para criar uma categoria.
     CURLOPT_URL => "http://bomgourmet.delivery/api/categorias/",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS => "token=3f59d6f547d995f675522784f5c8c631&Name=Teste%20API%202&Description=Testando%20API&Size%5B0%5D=360&PriceType=1&KindPasta%5B0%5D=16",
+    CURLOPT_POSTFIELDS => "Token=3f59d6f547d995f675522784f5c8c631&Name=Teste%20API%202&Description=Testando%20API&Size%5B0%5D=360&PriceType=1&KindPasta%5B0%5D=16",
     CURLOPT_HTTPHEADER => array(
     "content-type: application/x-www-form-urlencoded",
     ),
@@ -136,7 +136,7 @@ Endpoint para criar uma categoria.
 var client = new RestClient("http://bomgourmet.delivery/api/categorias/");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/x-www-form-urlencoded");
-request.AddParameter("application/x-www-form-urlencoded", "token=3f59d6f547d995f675522784f5c8c631&Name=Teste%20API%202&Description=Testando%20API&Size%5B0%5D=360&PriceType=1&KindPasta%5B0%5D=16", ParameterType.RequestBody);
+request.AddParameter("application/x-www-form-urlencoded", "Token=3f59d6f547d995f675522784f5c8c631&Name=Teste%20API%202&Description=Testando%20API&Size%5B0%5D=360&PriceType=1&KindPasta%5B0%5D=16", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -170,7 +170,7 @@ IRestResponse response = client.Execute(request);
 
 Parametro           |     Tipo      | Observação
 --------------------|---------------|------------
-CustomerId          | int           | ID do Cliente, podemos usar o token para isso também.
+Token               | string        | Token do Restaurante
 ParentCategoryId    | int           | ID da Categoria pai (Opcional)          
 Name                | string        | Nome da categoria
 Description         | string        | Descrição da categoria
