@@ -211,7 +211,7 @@ Endpoint para atualizar uma categoria.
     curl_setopt_array($curl, array(
     CURLOPT_URL => "http://bomgourmet.delivery/api/categorias/1672",
     CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_CUSTOMREQUEST => "PUT",
     CURLOPT_POSTFIELDS => "Token=3f59d6f547d995f675522784f5c8c631&Name=Teste%20API%202&Description=Testando%20API&Size%5B0%5D=360&PriceType=1&KindPasta%5B0%5D=16",
     CURLOPT_HTTPHEADER => array(
     "content-type: application/x-www-form-urlencoded",
@@ -232,7 +232,7 @@ Endpoint para atualizar uma categoria.
 
 ```c#
 var client = new RestClient("http://bomgourmet.delivery/api/categorias/1672");
-var request = new RestRequest(Method.POST);
+var request = new RestRequest(Method.PUT);
 request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "Token=3f59d6f547d995f675522784f5c8c631&Name=Teste%20API%202&Description=Testando%20API&Size%5B0%5D=360&PriceType=1&KindPasta%5B0%5D=16", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
