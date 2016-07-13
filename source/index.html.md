@@ -13,4 +13,5 @@ search: true
 includes:
     - impressora/_impressora.md
     - gnc/_gnc.md
+    - restaurante/_categorias.md
 ---
