@@ -164,3 +164,47 @@ PastaName               | string / null     | Tipo de massa do produto
 PastaPrice              | float / null      | Valor da massa
 SaleName                | string / null     | Nome da promoção
 Observation             | string / null     | Observações do cliente
+
+## Categorias
+Como ainda estamos definindo como irá funcionar a integração, esta é só o básico que precisamos para importar categorias.
+
+### Parametros
+Outros parametros ainda serão definidos junto com a GNC
+
+  Campo     |     Tipo    | Observação
+------------|-------------|------------
+ Token      |   string    | Token do restaurante
+
+### Campos necessários para importar categoria
+
+  Campo             |     Tipo      | Observação
+--------------------|---------------|------------
+CustomerId          | int           | ID do Cliente, podemos usar o token para isso também.
+ParentCategoryId    | int           | ID da Categoria pai (Opcional)          
+Name                | string        | Nome da categoria
+Description         | string        | Descrição da categoria
+Sizes               | Definir       | Tamanhos que serão aceitos nessa categoria.
+PriceType           | int           | Tipo de calculo que será usado para categorias que permitem mais de um sabor. 0 => Maior preço, 1 => Preço médio
+KindPasta           | Definir       | Tipos de massas que serão aceitos nessa categoria, caso haja algum.
+
+## Produtos
+Como ainda estamos definindo como irá funcionar a integração, esta é só o básico que precisamos para importar produtos.
+
+### Parametros
+Outros parametros ainda serão definidos junto com a GNC
+
+  Campo     |     Tipo    | Observação
+------------|-------------|------------
+ Token      |   string    | Token do restaurante
+
+
+### Campos necessários para importar produtos
+
+  Campo             |     Tipo      | Observação
+--------------------|---------------|------------
+Name                | string        | Nome do produto
+Description         | string        | Descrição do produto
+CategoryId          | int           | ID da categoria que o produto pertence
+Price               | float         | Preço do produto
+Photo               | Definir       | Precisamos definir se isso será usado
+SizePrice           | array         | Lista de preços por tamanho

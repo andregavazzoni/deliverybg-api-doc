@@ -174,9 +174,9 @@ Token               | string        | Token do Restaurante
 ParentCategoryId    | int           | ID da Categoria pai (Opcional)          
 Name                | string        | Nome da categoria
 Description         | string        | Descrição da categoria
-Sizes               | Definir       | Tamanhos que serão aceitos nessa categoria.
+Sizes               | Array         | Tamanhos que serão aceitos nessa categoria.
 PriceType           | int           | Tipo de calculo que será usado para categorias que permitem mais de um sabor. 0 => Maior preço, 1 => Preço médio
-KindPasta           | Definir       | Tipos de massas que serão aceitos nessa categoria, caso haja algum.
+KindPasta           | Array         | Tipos de massas que serão aceitos nessa categoria, caso haja algum.
 
 
 ### Retorno
@@ -267,9 +267,9 @@ Token               | string        | Token do Restaurante
 ParentCategoryId    | int           | ID da Categoria pai (Opcional)          
 Name                | string        | Nome da categoria
 Description         | string        | Descrição da categoria
-Sizes               | Definir       | Tamanhos que serão aceitos nessa categoria.
+Sizes               | Array         | Tamanhos que serão aceitos nessa categoria.
 PriceType           | int           | Tipo de calculo que será usado para categorias que permitem mais de um sabor. 0 => Maior preço, 1 => Preço médio
-KindPasta           | Definir       | Tipos de massas que serão aceitos nessa categoria, caso haja algum.
+KindPasta           | Array         | Tipos de massas que serão aceitos nessa categoria, caso haja algum.
 
 
 ### Retorno
