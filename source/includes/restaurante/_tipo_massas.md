@@ -38,10 +38,13 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-  "Id": 16,
-  "CustomerId": 104945,
-  "Name": "Massa API Atualizado",
-  "Price": "10.50"
+  "Result": "OK",
+  "Records": {
+    "Id": 16,
+    "CustomerId": 104945,
+    "Name": "Massa API",
+    "Price": "30.00"
+  }
 }
 ```
 
@@ -118,10 +121,13 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-  "Id": 16,
-  "CustomerId": 104945,
-  "Name": "Massa API",
-  "Price": "10"
+  "Result": "OK",
+  "Records": {
+    "Id": 20,
+    "CustomerId": 104945,
+    "Name": "Massa API",
+    "Price": "10"
+  }
 }
 ```
 
@@ -192,10 +198,13 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-  "Id": 16,
-  "CustomerId": 104945,
-  "Name": "Massa API Atualizado",
-  "Price": "15"
+  "Result": "OK",
+  "Records": {
+    "Id": 16,
+    "CustomerId": 104945,
+    "Name": "Massa API Atualizado",
+    "Price": "15"
+  }
 }
 ```
 

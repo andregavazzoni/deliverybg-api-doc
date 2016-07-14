@@ -38,10 +38,13 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-  "Id": 373,
-  "CustomerId": 104945,
-  "Name": "Teste API Atualizado",
-  "Quantity": 4
+  "Result": "OK",
+  "Records": {
+    "Id": 373,
+    "CustomerId": 104945,
+    "Name": "Teste API Atualizado",
+    "Quantity": 4
+  }
 }
 ```
 
@@ -118,10 +121,13 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-  "Id": 373,
-  "CustomerId": 104945,
-  "Name": "Teste API Atualizado",
-  "Quantity": 4
+  "Result": "OK",
+  "Records": {
+    "Id": 374,
+    "CustomerId": 104945,
+    "Name": "Teste API",
+    "Quantity": 4
+  }
 }
 ```
 
@@ -192,10 +198,13 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-  "Id": 373,
-  "CustomerId": 104945,
-  "Name": "Teste API Atualizado",
-  "Quantity": 4
+  "Result": "OK",
+  "Records": {
+    "Id": 373,
+    "CustomerId": 104945,
+    "Name": "Teste API Atualizado",
+    "Quantity": 4
+  }
 }
 ```
 

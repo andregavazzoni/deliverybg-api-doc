@@ -115,7 +115,7 @@ Endpoint para criar um produto.
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-    CURLOPT_URL => "http://bomgourmet.delivery/api/produtos/",
+    CURLOPT_URL => "http://bomgourmet.delivery/api/produtos",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_CUSTOMREQUEST => "POST",
     CURLOPT_POSTFIELDS => "Token=3f59d6f547d995f675522784f5c8c631&Name=Teste%20de%20Produto%20via%20API&CategoryId=1681&Price=10.50&SizePrice%5B0%5D%5BSizeId%5D=367&SizePrice%5B0%5D%5BPrice%5D=10",
@@ -137,7 +137,7 @@ Endpoint para criar um produto.
 ```
 
 ```c#
-var client = new RestClient("http://bomgourmet.delivery/api/produtos/");
+var client = new RestClient("http://bomgourmet.delivery/api/produtos");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "Token=3f59d6f547d995f675522784f5c8c631&Name=Teste%20de%20Produto%20via%20API&CategoryId=1681&Price=10.50&SizePrice%5B0%5D%5BSizeId%5D=367&SizePrice%5B0%5D%5BPrice%5D=10", ParameterType.RequestBody);
