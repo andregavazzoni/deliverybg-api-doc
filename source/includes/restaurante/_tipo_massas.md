@@ -1,16 +1,16 @@
-# Tamanhos
+# Tipo de Massas
 
 Base URL: http://bomgourmet.delivery/api
 
 ## Buscar Produto
-Endpoint para buscar um único tamanho.
+Endpoint para buscar um único tipo de massa.
 
 ```php
 <?php
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-      CURLOPT_URL => "http://bomgourmet.delivery/api/tamanhos/373?token=3f59d6f547d995f675522784f5c8c631",
+      CURLOPT_URL => "http://bomgourmet.delivery/api/tipo-massas/16?token=3f59d6f547d995f675522784f5c8c631",
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_CUSTOMREQUEST => "GET",
     ));
@@ -29,7 +29,7 @@ Endpoint para buscar um único tamanho.
 ```
 
 ```c#
-var client = new RestClient("http://bomgourmet.delivery/api/tamanhos/373?token=3f59d6f547d995f675522784f5c8c631");
+var client = new RestClient("http://bomgourmet.delivery/api/tipo-massas/16?token=3f59d6f547d995f675522784f5c8c631");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
@@ -38,21 +38,21 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-  "Id": 373,
+  "Id": 16,
   "CustomerId": 104945,
-  "Name": "Teste API Atualizado",
-  "Quantity": 4
+  "Name": "Massa API Atualizado",
+  "Price": "10.50"
 }
 ```
 
 ### HTTP Request
-`GET /tamanhos/{id}`
+`GET /tipo-massas/{id}`
 
 ### Parametros
 
 Parametro | Formato | Observação
 ----------|---------|------------
-id        |  int    | ID do Tamanho
+id        |  int    | ID do Tipo de Massa
 token     |  string | Token do cliente.
 
 
@@ -67,17 +67,17 @@ Records |  array  | Lista de pedidos, conforme abaixo
 ### Retorno (Records)
            Campo            |      Formato      | Observação
 ----------------------------|-------------------|---------------------------------------
-Id                          | int               | Identificador do Tamanho
+Id                          | int               | Identificador do Tipo de Massa
 CustomerId                  | int               | Identificador do Cliente
-Name                        | string            | Nome do tamanho
-Quantity                    | int               | Quantidade de sabores permitidos
+Name                        | string            | Nome do tipo de massa
+Price                       | float             | Preço do tipo de massa
 
 
-## Criar tamanho
-Endpoint para criar um tamanho.
+## Criar Tipo de Massa
+Endpoint para criar um tipo de massa.
 
 <aside class="notice">
-    O header "Location" pode ser utilizado para buscar o tamanho que foi criado
+    O header "Location" pode ser utilizado para buscar o tipo de massa que foi criado
 </aside>
 
 ```php
@@ -85,10 +85,10 @@ Endpoint para criar um tamanho.
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-    CURLOPT_URL => "http://bomgourmet.delivery/api/tamanhos",
+    CURLOPT_URL => "http://bomgourmet.delivery/api/tipo-massas",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS => "Token=3f59d6f547d995f675522784f5c8c631&Name=Teste%20API&Quantity=4"
+    CURLOPT_POSTFIELDS => "Token=3f59d6f547d995f675522784f5c8c631&Name=Massa%20API&Price=10"
     CURLOPT_HTTPHEADER => array(
     "content-type: application/x-www-form-urlencoded",
     ),
@@ -107,10 +107,10 @@ Endpoint para criar um tamanho.
 ```
 
 ```c#
-var client = new RestClient("http://bomgourmet.delivery/api/tamanhos");
+var client = new RestClient("http://bomgourmet.delivery/api/tipo-massas");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/x-www-form-urlencoded");
-request.AddParameter("application/x-www-form-urlencoded", "Token=3f59d6f547d995f675522784f5c8c631&Name=Teste%20API%20&Quantity=4", ParameterType.RequestBody);
+request.AddParameter("application/x-www-form-urlencoded", "Token=3f59d6f547d995f675522784f5c8c631&Name=Massa%20API%20&Price=10", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -118,51 +118,51 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-  "Id": 373,
+  "Id": 16,
   "CustomerId": 104945,
-  "Name": "Teste API Atualizado",
-  "Quantity": 4
+  "Name": "Massa API",
+  "Price": "10"
 }
 ```
 
-> Location: /tamanhos/373?token=3f59d6f547d995f675522784f5c8c631
+> Location: /tipo-massas/373?token=3f59d6f547d995f675522784f5c8c631
 
 ### HTTP Request
-`POST /tamanhos`
+`POST /tipo-massas`
 
 ### Response Headers
-`Location: /tamanhos/{id}?token={token}`
+`Location: /tipo-massas/{id}?token={token}`
 
 ### Parametros
 
 Parametro           |     Tipo      | Observação
 --------------------|---------------|------------
 Token               | string        | Token do cliente
-Name                | string        | Nome do tamanho
-Quantity            | int           | Quantidade de sabores permitidos
+Name                | string        | Nome do tipo de massa
+Price               | float         | Preço do tipo de massa
 
 ### Retorno (Records)
            Campo            |      Formato      | Observação
 ----------------------------|-------------------|---------------------------------------
-Id                          | int               | Identificador do Tamanho
+Id                          | int               | Identificador do Tipo de massa
 CustomerId                  | int               | Identificador do Cliente
-Name                        | string            | Nome do tamanho
-Quantity                    | int               | Quantidade de sabores permitidos
+Name                        | string            | Nome do tipo de massa
+Price                       | float             | Preço do tipo de massa
 
 
 
-## Atualizar tamanho
-Endpoint para atualizar um tamanho.
+## Atualizar tipo de massa
+Endpoint para atualizar um tipo de massa.
 
 ```php
 <?php
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-    CURLOPT_URL => "http://bomgourmet.delivery/api/tamanhos/373",
+    CURLOPT_URL => "http://bomgourmet.delivery/api/tipo-massas/16",
     CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_CUSTOMREQUEST => "POST",
-      CURLOPT_POSTFIELDS => "Token=3f59d6f547d995f675522784f5c8c631&Name=Teste%20API%20Atualizado&Quantity=4",
+    CURLOPT_CUSTOMREQUEST => "PUT",
+      CURLOPT_POSTFIELDS => "Token=3f59d6f547d995f675522784f5c8c631&Name=Massa%20API%20Atualizado&Price=15",
     CURLOPT_HTTPHEADER => array(
     "content-type: application/x-www-form-urlencoded",
     ),
@@ -181,10 +181,10 @@ Endpoint para atualizar um tamanho.
 ```
 
 ```c#
-var client = new RestClient("http://bomgourmet.delivery/api/tamanhos/373");
-var request = new RestRequest(Method.POST);
+var client = new RestClient("http://bomgourmet.delivery/api/tipo-massas/16");
+var request = new RestRequest(Method.PUT);
 request.AddHeader("content-type", "application/x-www-form-urlencoded");
-request.AddParameter("application/x-www-form-urlencoded", "Token=3f59d6f547d995f675522784f5c8c631&Name=Teste%20API%20Atualizado&Quantity=4", ParameterType.RequestBody);
+request.AddParameter("application/x-www-form-urlencoded", "Token=3f59d6f547d995f675522784f5c8c631&Name=Massa%20API%20Atualizado&Price=15", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -192,29 +192,29 @@ IRestResponse response = client.Execute(request);
 
 ```json
 {
-  "Id": 373,
+  "Id": 16,
   "CustomerId": 104945,
-  "Name": "Teste API Atualizado",
-  "Quantity": 4
+  "Name": "Massa API Atualizado",
+  "Price": "15"
 }
 ```
 
 ### HTTP Request
-`PUT /tamanhos/{id}`
+`PUT /tipo-massas/{id}`
 
 ### Parametros
 
 Parametro           |     Tipo      | Observação
 --------------------|---------------|------------
 Token               | string        | Token do cliente
-Name                | string        | Nome do tamanho
-Quantity            | int           | Quantidade de sabores permitidos
+Name                | string        | Nome do tipo de massa
+Price               | float         | Preço do tipo de massa
 
 
 ### Retorno (Records)
            Campo            |      Formato      | Observação
 ----------------------------|-------------------|---------------------------------------
-Id                          | int               | Identificador do Tamanho
+Id                          | int               | Identificador do Tipo de massa
 CustomerId                  | int               | Identificador do Cliente
-Name                        | string            | Nome do tamanho
-Quantity                    | int               | Quantidade de sabores permitidos
+Name                        | string            | Nome do tipo de massa
+Price                       | float             | Preço do tipo de massa
