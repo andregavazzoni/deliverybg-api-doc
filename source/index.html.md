@@ -16,4 +16,5 @@ includes:
     - restaurante/_categorias.md
     - restaurante/_produtos.md
     - restaurante/_tamanhos.md
+    - restaurante/_tipo_massas.md
 ---
