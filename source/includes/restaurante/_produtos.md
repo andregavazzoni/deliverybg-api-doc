@@ -184,6 +184,7 @@ IRestResponse response = client.Execute(request);
 
 Parametro           |     Tipo      | Observação
 --------------------|---------------|------------
+Token               | string        | Token do restaurante
 Name                | string        | Nome do produto
 Description         | string        | Descrição do produto
 CategoryId          | int           | ID da categoria que o produto pertence
@@ -289,6 +290,7 @@ IRestResponse response = client.Execute(request);
 
 Parametro           |     Tipo      | Observação
 --------------------|---------------|------------
+Token               | string        | Token do restaurante
 Name                | string        | Nome do produto
 Description         | string        | Descrição do produto
 CategoryId          | int           | ID da categoria que o produto pertence
